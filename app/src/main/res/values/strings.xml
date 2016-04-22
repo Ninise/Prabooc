@@ -4,5 +4,7 @@
 
 
     <string name="app_name">Prabooc</string>
+    <string name="access_denied">Access denied</string>
+    <string name="network_not_found">Wifi connection on found</string>
 
 </resources>
