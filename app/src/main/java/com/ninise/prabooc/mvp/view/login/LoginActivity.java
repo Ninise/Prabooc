@@ -11,25 +11,24 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
-import com.jakewharton.rxbinding.view.RxView;
 import com.ninise.prabooc.R;
 import com.ninise.prabooc.mvp.presenter.login.ILoginView;
 import com.ninise.prabooc.mvp.presenter.login.LoginPresenter;
 
 import butterknife.Bind;
 import butterknife.BindString;
+import butterknife.ButterKnife;
 
 public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> implements ILoginView {
 
     @Bind(R.id.loginToolbar) Toolbar mLoginToolbar;
+    @Bind(R.id.loginFacebookBtn) LoginButton mLoginButton;
     @BindString(R.string.access_denied) String mAccessDenied;
     @BindString(R.string.network_not_found) String mNetworkNotFound;
 
-    private LoginButton mLoginButton;
     private CallbackManager mCallbackManager;
 
     @Override
@@ -40,10 +39,9 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
         mCallbackManager= CallbackManager.Factory.create();
 
         setContentView(R.layout.login_activity);
+        ButterKnife.bind(this);
 
         setSupportActionBar(mLoginToolbar);
-
-        mLoginButton = (LoginButton)findViewById(R.id.loginFacebookBtn);
 
         mLoginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -62,6 +60,7 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
             }
         });
 
+        presenter.checkNetwork(getApplicationContext());
     }
 
     @NonNull
@@ -72,11 +71,17 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
 
     @Override
     public void accessDenied() {
-        Toast.makeText(this, mAccessDenied, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), mAccessDenied, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void networkNotFound() {
         Toast.makeText(this, mNetworkNotFound, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        ButterKnife.unbind(this);
+        super.onDestroy();
     }
 }

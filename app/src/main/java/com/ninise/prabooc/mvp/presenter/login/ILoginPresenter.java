@@ -1,7 +1,12 @@
 package com.ninise.prabooc.mvp.presenter.login;
 
-/**
- * Created by ninise on 23.04.16.
- */
-public interface ILoginPresenter {
+
+import android.content.Context;
+
+import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+
+public interface ILoginPresenter extends MvpPresenter<ILoginView> {
+
+    void checkNetwork(Context context);
+
 }
