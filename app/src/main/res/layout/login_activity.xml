@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginToolbar"
         android:text="@string/app_name"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:gravity="center"
         />
 
     <com.facebook.login.widget.LoginButton
