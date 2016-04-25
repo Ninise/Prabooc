@@ -12,9 +12,7 @@ public class LoginPresenter extends MvpBasePresenter<ILoginView> implements ILog
     public void checkNetwork(Context context) {
         NetworkConnection.getConnectivityStatus(context)
                 .subscribe(connectivityStatus -> {
-                    if (connectivityStatus.equals(ConnectivityStatus.WIFI_CONNECTED)) {
-                        getView().accessDenied();
-                    } else {
+                    if (!connectivityStatus.equals(ConnectivityStatus.WIFI_CONNECTED)) {
                         getView().networkNotFound();
                     }
                 });

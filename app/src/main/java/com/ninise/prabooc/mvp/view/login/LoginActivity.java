@@ -1,5 +1,6 @@
 package com.ninise.prabooc.mvp.view.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
@@ -43,10 +45,13 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
 
         setSupportActionBar(mLoginToolbar);
 
-        mLoginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+
+       mLoginButton.setOnClickListener(v -> presenter.checkNetwork(getApplicationContext()));
+
+        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("das", loginResult.toString());
+                Log.d("das", "onSuccess: " + loginResult.toString());
             }
 
             @Override
@@ -60,7 +65,13 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
             }
         });
 
-        presenter.checkNetwork(getApplicationContext());
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @NonNull
