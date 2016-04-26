@@ -18,7 +18,7 @@
         android:textSize="50sp"
         android:gravity="center"
         />
-    
+
     <TextView
         android:id="@+id/loginPhraseTextView"
         android:layout_width="match_parent"
