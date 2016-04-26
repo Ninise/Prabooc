@@ -1,6 +1,7 @@
 package com.ninise.prabooc.mvp.view.login;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.ninise.prabooc.mvp.presenter.login.ILoginView;
 import com.ninise.prabooc.mvp.presenter.login.LoginPresenter;
 
 import butterknife.Bind;
+import butterknife.BindDrawable;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 
@@ -28,8 +30,8 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
 
     @Bind(R.id.loginToolbar) Toolbar mLoginToolbar;
     @Bind(R.id.loginFacebookBtn) LoginButton mLoginButton;
-    @BindString(R.string.access_denied) String mAccessDenied;
     @BindString(R.string.network_not_found) String mNetworkNotFound;
+    @BindDrawable(R.mipmap.ic_launcher) Drawable mLoginDrawable;
 
     private CallbackManager mCallbackManager;
 
@@ -44,6 +46,7 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
         ButterKnife.bind(this);
 
         setSupportActionBar(mLoginToolbar);
+        mLoginToolbar.setLogo(mLoginDrawable);
 
 
        mLoginButton.setOnClickListener(v -> presenter.checkNetwork(getApplicationContext()));
@@ -78,11 +81,6 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
     @Override
     public LoginPresenter createPresenter() {
         return new LoginPresenter();
-    }
-
-    @Override
-    public void accessDenied() {
-        Toast.makeText(getApplicationContext(), mAccessDenied, Toast.LENGTH_SHORT).show();
     }
 
     @Override

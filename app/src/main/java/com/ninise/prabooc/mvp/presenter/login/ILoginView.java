@@ -4,7 +4,6 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 
 public interface ILoginView extends MvpView {
 
-    void accessDenied();
     void networkNotFound();
 
 }

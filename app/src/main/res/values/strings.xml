@@ -4,8 +4,12 @@
     <string name="fb_login_protocol_scheme">fb230825303946657</string>
 
     <string name="app_name">Prabooc</string>
-    <string name="access_denied">Access denied</string>
-    <string name="network_not_found">Wifi connection on found</string>
-    <string name="login_phrase">For pragmatic people...</string>
 
+    <!-- Login activity -->
+    <string name="network_not_found">Wifi connection on found</string>
+    <string name="login_phrase">For pragmatic people…</string>
+    <string name="com_facebook_loginview_log_out_button">SIGN OUT</string>
+    <string name="com_facebook_loginview_log_in_button">SIGN IN</string>
+    <string name="com_facebook_loginview_log_in_button_long">SIGN IN</string>
+    <string name="com_facebook_loginview_log_out_button_long">SIGN OUT</string>
 </resources>
