@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".mvp.view.home.HomeActivity"/>
+
         <activity android:name="com.facebook.FacebookActivity"
                   android:configChanges=
                       "keyboard|keyboardHidden|screenLayout|screenSize|orientation"

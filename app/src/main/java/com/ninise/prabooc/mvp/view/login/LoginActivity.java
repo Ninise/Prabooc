@@ -20,6 +20,7 @@ import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.ninise.prabooc.R;
 import com.ninise.prabooc.mvp.presenter.login.ILoginView;
 import com.ninise.prabooc.mvp.presenter.login.LoginPresenter;
+import com.ninise.prabooc.mvp.view.home.HomeActivity;
 
 import butterknife.Bind;
 import butterknife.BindDrawable;
@@ -54,7 +55,7 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("das", "onSuccess: " + loginResult.toString());
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             }
 
             @Override

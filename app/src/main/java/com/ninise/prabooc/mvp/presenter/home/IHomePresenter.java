@@ -1,7 +1,9 @@
 package com.ninise.prabooc.mvp.presenter.home;
 
-/**
- * Created by ninise on 27.04.16.
- */
+import android.view.MenuItem;
+
 public interface IHomePresenter {
+
+    boolean menuSelected(MenuItem item);
+
 }
