@@ -3,6 +3,7 @@ package com.ninise.prabooc.mvp.presenter.home;
 import android.view.MenuItem;
 
 import com.ninise.prabooc.R;
+import com.ninise.prabooc.mvp.network.facebook.SessionState;
 
 
 public class HomePresenter implements IHomePresenter {
@@ -24,6 +25,7 @@ public class HomePresenter implements IHomePresenter {
             case R.id.menuSettings:
                 return true;
             case R.id.menuSignOut:
+                SessionState.signOut();
                 mView.exit();
                 return true;
         }

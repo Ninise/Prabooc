@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 
-public interface ILoginPresenter extends MvpPresenter<ILoginView> {
+public interface ILoginPresenter {
 
     void checkNetwork(Context context);
 

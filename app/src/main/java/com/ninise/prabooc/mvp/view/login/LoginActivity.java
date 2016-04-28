@@ -3,10 +3,9 @@ package com.ninise.prabooc.mvp.view.login;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -16,7 +15,6 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.ninise.prabooc.R;
 import com.ninise.prabooc.mvp.presenter.login.ILoginView;
 import com.ninise.prabooc.mvp.presenter.login.LoginPresenter;
@@ -27,7 +25,7 @@ import butterknife.BindDrawable;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> implements ILoginView {
+public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     @Bind(R.id.loginToolbar) Toolbar mLoginToolbar;
     @Bind(R.id.loginFacebookBtn) LoginButton mLoginButton;
@@ -35,6 +33,7 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
     @BindDrawable(R.mipmap.ic_launcher) Drawable mLoginDrawable;
 
     private CallbackManager mCallbackManager;
+    private LoginPresenter mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,16 +45,19 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
         setContentView(R.layout.login_activity);
         ButterKnife.bind(this);
 
+        mPresenter = new LoginPresenter(this);
+
         setSupportActionBar(mLoginToolbar);
         mLoginToolbar.setLogo(mLoginDrawable);
 
 
-       mLoginButton.setOnClickListener(v -> presenter.checkNetwork(getApplicationContext()));
+        mLoginButton.setOnClickListener(v -> mPresenter.checkNetwork(getApplicationContext()));
 
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
             }
 
             @Override
@@ -76,12 +78,6 @@ public class LoginActivity extends MvpActivity<ILoginView, LoginPresenter> imple
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @NonNull
-    @Override
-    public LoginPresenter createPresenter() {
-        return new LoginPresenter();
     }
 
     @Override
