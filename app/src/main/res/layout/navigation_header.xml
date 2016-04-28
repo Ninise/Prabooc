@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/header_wall">
     <TextView
         android:id="@+id/navigationTestTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:paddingBottom="4dp"
-        android:textAllCaps="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
         android:text="USER NAME"
         style="@style/RobotoTextViewStyle"
         />
