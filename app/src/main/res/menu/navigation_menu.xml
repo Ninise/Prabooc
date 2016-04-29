@@ -4,21 +4,25 @@
     <item
         android:id="@+id/menuHome"
         android:title="@string/menu_home"
+        android:icon="@drawable/ic_action_action_home"
         />
 
     <item
         android:id="@+id/menuFriends"
         android:title="@string/menu_friends"
+        android:icon="@drawable/ic_action_social_people"
         />
 
     <item
         android:id="@+id/menuSettings"
         android:title="@string/menu_settings"
+        android:icon="@drawable/ic_action_action_settings"
         />
 
     <item
         android:id="@+id/menuSignOut"
         android:title="@string/menu_sing_out"
+        android:icon="@drawable/ic_action_action_exit_to_app"
         />
 
 </menu>

@@ -1,12 +1,9 @@
 package com.ninise.prabooc.mvp.presenter.login;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.github.pwittchen.reactivenetwork.library.ConnectivityStatus;
 import com.ninise.prabooc.mvp.network.NetworkConnection;
-import com.ninise.prabooc.mvp.network.facebook.SessionState;
-import com.ninise.prabooc.mvp.view.home.HomeActivity;
 
 public class LoginPresenter implements ILoginPresenter {
 
