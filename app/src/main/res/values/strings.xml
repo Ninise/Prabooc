@@ -20,4 +20,6 @@
     <string name="menu_sing_out">Sign out</string>
     <string name="back_pressed">Press twice for exit</string>
     <string name="menu_about">About</string>
+    <string name="about_creator">Created by Ninise @ 2016</string>
+    <string name="about_ok">OK</string>
 </resources>

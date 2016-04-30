@@ -4,6 +4,7 @@ import android.view.MenuItem;
 
 import com.ninise.prabooc.R;
 import com.ninise.prabooc.mvp.network.facebook.SessionState;
+import com.ninise.prabooc.mvp.view.about.AboutActivity;
 
 
 public class HomePresenter implements IHomePresenter {
@@ -25,6 +26,7 @@ public class HomePresenter implements IHomePresenter {
             case R.id.menuSettings:
                 return true;
             case R.id.menuAbout:
+                mView.switchToActivity(AboutActivity.class);
                 return true;
             case R.id.menuSignOut:
                 SessionState.signOut();

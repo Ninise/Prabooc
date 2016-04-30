@@ -1,5 +1,6 @@
 package com.ninise.prabooc.mvp.view.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -72,6 +73,11 @@ public class HomeActivity extends AppCompatActivity implements IHomeView {
         Toast.makeText(this, getString(R.string.back_pressed), Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+    }
+
+    @Override
+    public void switchToActivity(Class c) {
+        startActivity(new Intent(this, c));
     }
 
     @Override
