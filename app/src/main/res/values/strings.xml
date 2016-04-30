@@ -19,4 +19,5 @@
     <string name="closeDrawer">close</string>
     <string name="menu_sing_out">Sign out</string>
     <string name="back_pressed">Press twice for exit</string>
+    <string name="menu_about">About</string>
 </resources>

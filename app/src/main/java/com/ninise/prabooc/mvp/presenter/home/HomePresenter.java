@@ -24,6 +24,8 @@ public class HomePresenter implements IHomePresenter {
                 return true;
             case R.id.menuSettings:
                 return true;
+            case R.id.menuAbout:
+                return true;
             case R.id.menuSignOut:
                 SessionState.signOut();
                 mView.exit();
